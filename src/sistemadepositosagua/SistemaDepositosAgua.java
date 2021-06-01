@@ -8,26 +8,57 @@ public class SistemaDepositosAgua {
 
     public static void main(String[] args) {
 
+        SistemaAgua sistema = new SistemaAgua();
+
         Deposito depoA = new Deposito("depoA", 100);
+        depoA.añadirAgua(60);
+        Deposito depoB = new Deposito("depoB", 100);
+        depoB.añadirAgua(30);
+        System.out.println("depoA " + depoA);
+        System.out.println("depoB " + depoB);
+
+        sistema.addDeposito(depoA);
+        sistema.addDeposito(depoB);
+        System.out.println(sistema);
+
+        /*
+        Primer test: Traspasar agua dentro de los límites.
+         */
+        System.out.println("\n*************\n" + "Traspasando 50 litros de agua desde 'depoA' a 'depoB'" + "\n*************\n");
+        sistema.traspasarAgua(depoA, 50, depoB);
+        System.out.println("depoA " + depoA);
+        System.out.println("depoB " + depoB);
+        System.out.println(sistema);
+
+        /*
+        Segundo test: Intentar traspasar agua de un depósito a sí mismo.
+         */
+        System.out.println("\n*************\n" + "Traspasando 50 litros de agua desde 'depoA' a 'depoA'" + "\n*************\n");
+        sistema.traspasarAgua(depoA, 50, depoA);
         System.out.println("depoA " + depoA);
 
         /*
-        Primer test: añadir y quitar agua dentro de su capacidad máxima
+        Tercer test: Intentar pasar más agua de la que hay a otro depósito.
          */
-        depoA.añadirAgua(50);
+        System.out.println("\n*************\n" + "Traspasando 50 litros de agua desde 'depoA' a 'depoB'" + "\n*************\n");
+        sistema.traspasarAgua(depoA, 50, depoB);
         System.out.println("depoA " + depoA);
-
-        depoA.quitarAgua(25);
-        System.out.println("depoA " + depoA);
+        System.out.println("depoB " + depoB);
+        System.out.println(sistema);
 
         /*
-        Segundo test: Añadir y quitar agua excediendo su capacidad máxima
+        Cuarto test: Intentar pasar agua a un depósito que ya esté lleno.
          */
-        depoA.añadirAgua(500);
+        System.out.println("\n*************\n" + "Añadiendo 70 litros a depoA\n" + "Añadiendo 100 litros a depoB\n"
+                + "Traspasando 50 litros de agua desde 'depoA' a 'depoB'" + "\n*************\n");
+        depoA.añadirAgua(70);
+        depoB.añadirAgua(100);
+        sistema.traspasarAgua(depoA, 50, depoB);
         System.out.println("depoA " + depoA);
-
-        depoA.quitarAgua(500000);
-        System.out.println("depoA " + depoA);
+        System.out.println("depoB " + depoB);
+        System.out.println(sistema);
+        
+        
 
     }
 
