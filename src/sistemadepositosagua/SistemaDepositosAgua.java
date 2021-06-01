@@ -51,14 +51,19 @@ public class SistemaDepositosAgua {
          */
         System.out.println("\n*************\n" + "Añadiendo 70 litros a depoA\n" + "Añadiendo 100 litros a depoB\n"
                 + "Traspasando 50 litros de agua desde 'depoA' a 'depoB'" + "\n*************\n");
-        depoA.añadirAgua(70);
-        depoB.añadirAgua(100);
+        sistema.llenarDeposito(depoA, 70);
+        sistema.llenarDeposito(depoB, 100);
         sistema.traspasarAgua(depoA, 50, depoB);
         System.out.println("depoA " + depoA);
         System.out.println("depoB " + depoB);
         System.out.println(sistema);
         
+        /*
+        Quinto test: Probar el method vaciarDeposito()
+        */
         
+        sistema.vaciarDeposito(depoA, 35);
+        System.out.println("depoA " + depoA);
 
     }
 

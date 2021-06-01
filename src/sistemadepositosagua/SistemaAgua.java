@@ -15,6 +15,11 @@ public class SistemaAgua {
         this.depositos = new ArrayList<>();
     }
 
+    /*
+    Operación 1: Traspasar agua de un depósito a otro, especificando cantidad.
+    No es posible mandar más agua de la que ya contiene el depósito.
+    Tampoco es posible que un depósito se traspase agua a sí mismo.
+     */
     public void traspasarAgua(Deposito emisor, int cantidadEmisor, Deposito receptor) {
         while (true) {
             // Impedir que un depósito se mande agua a sí mismo.
@@ -29,13 +34,23 @@ public class SistemaAgua {
             if (receptor.getContenidoActual() == receptor.getCapacidadMax()) {
                 cantidadEmisor = 0;
             }
-            
+
             receptor.añadirAgua(cantidadEmisor);
             emisor.quitarAgua(cantidadEmisor);
             break;
         }
     }
 
+    // Operación 2: Llenar un depósito específico según cantidad.
+    public void llenarDeposito(Deposito depo, int cantidad) {
+        depo.añadirAgua(cantidad);
+    }
+
+    // Operación 3: Vaciar un depósito específico según cantidad.
+    public void vaciarDeposito(Deposito depo, int cantidad) {
+        depo.quitarAgua(cantidad);
+    }
+    
     public void addDeposito(Deposito depo) {
         this.depositos.add(depo);
     }
@@ -59,7 +74,7 @@ public class SistemaAgua {
     public int porcentajeEnUso() {
         double uso = getAguaEnUso();
         double total = getCapacidadTotalDepositos();
-        return (int)(((uso / total) * 100));
+        return (int) (((uso / total) * 100));
     }
 
     public String toString() {
