@@ -1,4 +1,3 @@
-
 package sistemadepositosagua;
 
 import javax.swing.JOptionPane;
@@ -210,7 +209,7 @@ public class SistemaDepositosAgua extends javax.swing.JFrame {
                     .addComponent(butTras70))
                 .addGap(67, 67, 67)
                 .addComponent(butTrasConfirmar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(labelTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -613,6 +612,7 @@ public class SistemaDepositosAgua extends javax.swing.JFrame {
         labelACapacidad.setText(depoA.toString());
         labelBCapacidad.setText(depoB.toString());
         labelCCapacidad.setText(depoC.toString());
+        labelTest.setText("¡Agua traspasada!");
 
     }//GEN-LAST:event_butTrasConfirmarActionPerformed
 
